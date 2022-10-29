@@ -21,9 +21,5 @@ module BoardProject
 
     # 日本時間設定
     config.time_zone = 'Tokyo'
-
-    # 日本語設定
-    config.i18n.default_locate = :ja
-    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
   end
 end
