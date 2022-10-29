@@ -10,8 +10,8 @@ class BoardsController < ApplicationController
     end
 
     def create
-        board = Board.create(board_params)
-        redirect_to boards_path      
+        @board = Board.create(board_params)
+        redirect_to @board, flash: {notice: "「#{@board.title}」の掲示板を作成しました"}
     end
 
     def show
@@ -21,13 +21,13 @@ class BoardsController < ApplicationController
     end
 
     def update
-        board.update(board_params)
-        redirect_to board
+        @board.update(board_params)
+        redirect_to @board
     end
 
     def destroy
-        board.delete
-        redirect_to boards_path
+        @board.delete
+        redirect_to boards_path, flash: { notice: "「#{@board.title}」の掲示板を削除しました"}
     end
 
     private
