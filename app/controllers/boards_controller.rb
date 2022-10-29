@@ -23,6 +23,8 @@ class BoardsController < ApplicationController
     end
 
     def show
+        # boardに紐づくcommentsを作成
+        @comment = @board.comments.new
     end
 
     def edit

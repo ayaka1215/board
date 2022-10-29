@@ -8,6 +8,7 @@
 <% if flash[:notice] %>
   <div class= "alert alert-primary"><%= flash[:notice] %></div>
 <% end %>
+
 <div class="card">
   <div class="card-header">
     <h4><%= @board.title %></h4>
@@ -17,3 +18,5 @@
     <p class="text-right font-weight-bold mr-10"><%= @board.name %></p>
   </div>
 </div>
+
+<%= render partial: 'comment_form', locals: { comment: @comment } %>
