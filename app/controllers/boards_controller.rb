@@ -7,6 +7,7 @@ class BoardsController < ApplicationController
 
     def new
         @board = Board.new
+        @board.attributes = flash[:board] if flash[:board]
     end
 
     def create
@@ -24,15 +25,22 @@ class BoardsController < ApplicationController
 
     def show
         @comment = Comment.new(board_id: @board.id)
-        # boardに紐づくcommentsを作成
     end
 
     def edit
+        @board.attributes = flash[:board] if flash[:board]
     end
 
     def update
-        @board.update(board_params)
-        redirect_to @board
+        if @board.update(board_params)
+            flash[:notice] = "#{@board.title}の掲示板を編集しました"
+            redirect_to @board
+        else
+            redirect_to edit_board_path, flash: {
+                board: @board,
+                error_messages: @board.errors.full_messages
+            }
+        end
     end
 
     def destroy
