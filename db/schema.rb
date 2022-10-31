@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_31_030700) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_31_074406) do
   create_table "board_tag_relations", charset: "utf8mb4", force: :cascade do |t|
     t.bigint "board_id", null: false
     t.bigint "tag_id", null: false
@@ -41,6 +41,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_31_030700) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "users", charset: "utf8mb4", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "password_digest", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_users_on_name", unique: true
   end
 
   add_foreign_key "board_tag_relations", "boards"
