@@ -1,12 +1,12 @@
 <h1>ログイン</h1>
-
+      # TODO：エラーメッセージを表示する
 <%= form_for(:session, method: :post, url: login_path) do |f| %>
   <div class="form-group">
-    <%= f.label :name, 'ユーザー名' %>
+    <%= f.label :name, 'ユーザー名（英数字）' %>
     <%= f.text_field :name, class: 'form-control' %>
   </div>
   <div class="form-group">
-    <%= f.label :password, 'パスワード' %>
+    <%= f.label :password, 'パスワード（英数字8字以上）' %>
     <%= f.password_field :password, class: 'form-control' %>
   </div>
   <%= f.submit 'ログイン', class: 'btn btn-primary' %>
