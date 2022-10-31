@@ -19,4 +19,9 @@
   </div>
 </div>
 
-<%= render partial: 'comment_form', locals: { comment: @comment } %>
+<%= render partial: 'comments/form', locals: { comment: @comment } %>
+
+<div class="p-comment__list">
+  <div class="p-comment__listTitle">コメント</div>
+  <%= render @board.comments %>
+</div>
